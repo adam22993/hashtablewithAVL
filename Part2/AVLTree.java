@@ -49,17 +49,17 @@ public class AVLTree {
     }
 
     public Spell search(String spellName, int powerLevel) {
-        return spellSearch(powerLevel, this.root);
+        return spellSearch(spellName, powerLevel, this.root);
     }
 
-    public Spell spellSearch(int powerLevel, Node curr) {
-        if (curr.spell.getPowerLevel() == powerLevel) {
+    public Spell spellSearch(String spellName, int powerLevel, Node curr) {
+        if (curr.spell.getPowerLevel() == powerLevel && curr.spell.getName().equals(spellName)) {
             return curr.spell;
         }
         if (curr.spell.getPowerLevel() > powerLevel && curr.left != null) {
-            return spellSearch(powerLevel, curr.left);
+            return spellSearch(spellName, powerLevel, curr.left);
         } else if (curr.spell.getPowerLevel() < powerLevel && curr.right != null) {
-            return spellSearch(powerLevel, curr.right);
+            return spellSearch(spellName, powerLevel, curr.right);
         } else {
             return null;
         }
@@ -175,7 +175,6 @@ public class AVLTree {
             list.add(node.spell);
         }
         retTopK(k, node.left, list);
-        System.out.println("current k: " + k);
         return list;
     }
 }
