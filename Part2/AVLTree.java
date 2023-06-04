@@ -37,7 +37,7 @@ public class AVLTree {
     }
 
     public int getTreeHeight(){
-        return this.root.height;
+        return height(this.root);
     }
 
     public int getSize(){

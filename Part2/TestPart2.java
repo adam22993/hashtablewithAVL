@@ -34,5 +34,6 @@ public class TestPart2 {
 
         // after all 10 insertions, the search("firedestructionball", 15) should return the following:
         assertEquals("firedestructionball (fire) - Power Level: 15, to cast say: I think megadeath wrote a song about this one...", tree.search("firedestructionball", 15).toString());
+        assertEquals(3, tree.getTreeHeight());
     }
 }
