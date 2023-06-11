@@ -1,13 +1,15 @@
-package Part1;
+package Part1;// 207194879
+// 206001018
+import Part1.DoubleHashTable;
+import org.junit.Assert;
 import org.junit.Test;
 import static org.junit.Assert.*;
-
-public class TestPart1 {
+public class MainPart1 {
     @Test
     public void testSpellSimple() {
         SpellSimple spell = new SpellSimple("Accio", "Summoning Charm");
-        assertEquals("Accio", spell.getName());
-        assertEquals("Summoning Charm", spell.getWords());
+        Assert.assertEquals("Accio", spell.getName());
+        Assert.assertEquals("Summoning Charm", spell.getWords());
     }
 
     @Test
@@ -59,5 +61,13 @@ public class TestPart1 {
         assertEquals(3, table2.hash2("B"));
         assertEquals(1, table2.hash2("D"));
         assertEquals(1, table2.hash2("P"));
+
+        // try and create an empty hash table with 2 buckets
+        assertThrows(IllegalArgumentException.class, () -> new DoubleHashTable(0));
+        assertThrows(IllegalArgumentException.class, () -> new DoubleHashTable(-1));
+        assertThrows(IllegalArgumentException.class, () -> new DoubleHashTable(1));
+        assertThrows(IllegalArgumentException.class, () -> new DoubleHashTable(2));
+
+
     }
 }

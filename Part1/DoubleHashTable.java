@@ -1,5 +1,7 @@
 package Part1;
 
+// 207194879
+// 206001018
 public class DoubleHashTable {
     private SpellSimple[] table;
     private final int capacity;
@@ -7,6 +9,7 @@ public class DoubleHashTable {
     private int steps = 0;
 
     public DoubleHashTable(int capacity) {
+        if (capacity <= 2) throw new IllegalArgumentException("Capacity must be greater than 0");
         this.capacity = capacity;
         this.table = new SpellSimple[capacity];
         this.size = 0;
@@ -71,7 +74,7 @@ public class DoubleHashTable {
                 break;
             }
         }
-        System.out.println("Spell not found"); //debugging purposes
+        System.out.println("Part2.Spell not found"); //debugging purposes
         return null;
     }
 

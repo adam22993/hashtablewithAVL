@@ -1,5 +1,8 @@
-import Part1.*;
-import Part2.*;
+import Part1.DoubleHashTable;
+import Part1.SpellSimple;
+import Part2.HashAVLSpellTable;
+import Part2.Spell;
+
 import java.util.List;
 
 public class Main {
@@ -49,7 +52,7 @@ public class Main {
         table3.addSpell(new Spell("shockwave II", "lightning", 10,"be useful pikachu."));
         table3.addSpell(new Spell("frost nova", "ice", 4, "chill dude"));
 
-        System.out.println("The current number of spells is " + table3.getNumberSpells()); // prints the total number of spells
+        System.out.println("The current number of spells is " + table3.getNumberOfSpells()); // prints the total number of spells
         System.out.println("The current number of fire spells spells is " + table3.getNumberSpells("fire")); // prints the total number of fire spells
 
         // get the top 3 spells in the "fire" category
@@ -69,25 +72,25 @@ public class Main {
         // spell that exists in the table
         Spell searchedSpell = table3.searchSpell("fire","fireball",  10);
         if (searchedSpell != null) {
-            System.out.println("Spell Found: " + searchedSpell.toString());
+            System.out.println("Part2.Spell Found: " + searchedSpell.toString());
         } else {
-            System.out.println("Spell Not Found");
+            System.out.println("Part2.Spell Not Found");
         }
 
         // search for a spell that does not exist in the table
         searchedSpell = table3.searchSpell("fire", "fireball", 11);
         if (searchedSpell != null) {
-            System.out.println("Spell Found: " + searchedSpell.toString());
+            System.out.println("Part2.Spell Found: " + searchedSpell.toString());
         } else {
-            System.out.println("Spell Not Found");
+            System.out.println("Part2.Spell Not Found");
         }
 
         // search for a spell that does not exist in the table
         searchedSpell = table3.searchSpell("ice", "fireball", 10);
         if (searchedSpell != null) {
-            System.out.println("Spell Found: " + searchedSpell.toString());
+            System.out.println("Part2.Spell Found: " + searchedSpell.toString());
         } else {
-            System.out.println("Spell Not Found");
+            System.out.println("Part2.Spell Not Found");
         }
     }
 }

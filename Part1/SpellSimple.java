@@ -1,5 +1,7 @@
 package Part1;
 
+// 207194879
+// 206001018
 public class SpellSimple {
     private final String name;
     private final String words;

@@ -1,13 +1,18 @@
-package Part2;
+package Part2;// 207194879
+// 206001018
+
+import Part2.AVLTree;
+
 import java.util.LinkedList;
 import java.util.List;
 
 public class HashAVLSpellTable {
-    private LinkedList<AVLTree>[] buckets;
+    private LinkedList<AVLTree> buckets[];
     private int tableSize;
     private int numSpells;
 
     public HashAVLSpellTable(int size) {
+        if (size <= 0) { throw new IllegalArgumentException("Table size cannot be 0 or lower."); }
         this.tableSize = size;
         this.buckets = new LinkedList[size];
         this.numSpells = 0;
@@ -22,6 +27,7 @@ public class HashAVLSpellTable {
     }
 
     public void addSpell(Spell s) {
+        if (s == null) { throw new IllegalArgumentException("Part2.Spell cannot be null."); }
         int index = hash(s.getCategory());
         if (buckets[index] == null) {
             buckets[index] = new LinkedList<>();
@@ -61,7 +67,7 @@ public class HashAVLSpellTable {
         return null;
     }
 
-    public int getNumberSpells(){
+    public int getNumberOfSpells(){
         return numSpells;
     }
 
@@ -89,6 +95,23 @@ public class HashAVLSpellTable {
             }
         }
         return null;
+    }
+
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        int bucketNum = 0;
+        int treeNum = 0;
+        for (LinkedList<AVLTree> bucket : buckets) {
+            treeNum = 0;
+            if (bucket != null) {
+                for (AVLTree tree : bucket) {
+                    sb.append(String.format("Bucket index %d, tree index %d: ", bucketNum, treeNum)).append(tree.toString()).append("\n");
+                    treeNum++;
+                }
+            }
+            bucketNum++;
+        }
+        return sb.toString();
     }
 }
 

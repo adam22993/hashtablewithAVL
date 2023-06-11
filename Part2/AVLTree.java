@@ -1,9 +1,8 @@
-package Part2;
+package Part2;// 207194879
+// 206001018
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static java.lang.Math.abs;
 
 public class AVLTree {
 
@@ -13,12 +12,14 @@ public class AVLTree {
 
     // private Node class for the AVL Tree nodes
     private class Node {
-        private final Spell spell;
+        private Spell spell;
         private Node left;
         private Node right;
         private int height;
 
         private Node(Spell spell) {
+            if (spell == null)
+                throw new IllegalArgumentException("Part2.Spell cannot be null");
             this.spell = spell;
             this.height = 0;
             this.left = null;
@@ -26,7 +27,7 @@ public class AVLTree {
         }
         public String toString() {
             return String.valueOf(spell.getPowerLevel());
-        }
+        } // for testing purposes
     }
 
     // Constructor, getters, setters
@@ -35,14 +36,14 @@ public class AVLTree {
         this.size = 1;
         this.category = spell.getCategory();
     }
+    public int getSize(){
+        return this.size;
+    }
 
     public int getTreeHeight(){
         return height(this.root);
     }
 
-    public int getSize(){
-        return this.size;
-    }
 
     public String getCategory() {
         return this.category;
@@ -80,6 +81,8 @@ public class AVLTree {
         return leftHeight - rightHeight;
     }
     public void insert(Spell spell) {
+        if (!spell.getCategory().equals(this.category))
+            return; // if the spell is not in the same category as the tree, return.
         root = insertHelper(root, spell);
     }
 
@@ -176,6 +179,17 @@ public class AVLTree {
         }
         retTopK(k, node.left, list);
         return list;
+    }
+
+    public String toString() {
+        return toStringHelper(this.root);
+    }
+
+    private String toStringHelper(Node node) {
+        if (node == null) {
+            return "";
+        }
+        return toStringHelper(node.left) + " " + node.spell.toString() + " " + toStringHelper(node.right);
     }
 }
 
